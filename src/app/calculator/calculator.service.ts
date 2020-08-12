@@ -216,6 +216,8 @@ export class CalculatorService {
     this.valueChanged.next(value); 
   }
   addFirstDigit(factor:string, num:string){
+    if(num == '0')
+      return;
     let value = factor == 'next'? this.nextFactor = num : this.firstFactor = num;
     this.valueChanged.next(value);
   }
