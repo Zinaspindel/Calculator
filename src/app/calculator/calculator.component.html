@@ -1,0 +1,32 @@
+<div id="calculator">
+    <div id="display">
+        <input id="currentValue" [(ngModel)]="currentValue" disabled>
+        <span id="valueDisplay" hidden></span>
+    </div>
+    <div class="container" id="container">
+        <button class="group-1 left" (click)="onClear()">{{AC}}</button>
+        <button class="group-1"(click)="onChangePositivity()">±</button>
+        <button class="group-1" (click)="getPrecent()">%</button>
+        <button class="group-2 right"(click)="useOperator('/')">÷</button>
+        
+        <button class="number left" (click)="getNumber('7')">7</button>
+        <button class="number" (click)="getNumber('8')">8</button>
+        <button class="number" (click)="getNumber('9')">9</button>
+        <button class="group-2 right"(click)="useOperator('*')">×</button>
+        
+        <button class="number left" (click)="getNumber('4')">4</button>
+        <button class="number" (click)="getNumber('5')">5</button>
+        <button class="number" (click)="getNumber('6')">6</button>
+        <button class="group-2 right" (click)="useOperator('-')">-</button>
+        
+        <button class="number left" (click)="getNumber('1')">1</button>
+        <button class="number" (click)="getNumber('2')">2</button>
+        <button class="number" (click)="getNumber('3')">3</button>
+        <button class="group-2 right" (click)="useOperator('+')">+</button>
+        
+        <button class="number left bottom zero" (click)="getNumber('0')">0</button>
+        <button class="bottom" (click)="getDecimel()">.</button>
+        <button class="group-2 right bottom" (click)="useOperator('=')">=</button>
+    </div>
+</div>
+
