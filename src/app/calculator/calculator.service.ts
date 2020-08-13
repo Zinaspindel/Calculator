@@ -155,13 +155,15 @@ export class CalculatorService {
     }
   }
   operatorHandlers(){
-    let first = +this.firstFactor;
-    let next = +this.nextFactor;
     let operator = this.nextOperator==null? this.nextOperator : this.firstOperator;
     operator = operator == '='? this.firstOperator: operator;
     this.firstOperator = this.nextOperator;
     this.nextOperator = null;
-
+    this.operatorSwitch(operator);
+  }
+  operatorSwitch(operator:string){
+    let first = +this.firstFactor;
+    let next = +this.nextFactor;
     switch(operator){
       case '+':
         first += next;
