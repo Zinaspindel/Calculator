@@ -85,33 +85,36 @@ export class CalculatorService {
   }
   isCommaNeeded(value:string):string{
     let negativeValue: boolean;
-    
     if(value.length>=4){
       if(value.indexOf('-')!=-1){
         negativeValue = true
         value = value.slice(1);
       }
-      let fixedValue = '';
-      let count = 0;
       let isFraction = value.indexOf('.');
       let fraction = null;
       if(isFraction!=-1){
         fraction = value.slice(isFraction);
         value = value.slice(0,isFraction);
       }
-      for(let i=value.length-1; i>=0; i--){
+      let fixedValue = this.returnValueWithCommas(value);
+      if(negativeValue)
+        fixedValue = fixedValue + '-';
+      return fraction? this.reverseString(fixedValue)+fraction: this.reverseString(fixedValue);
+    }
+    return value;
+  }
+  returnValueWithCommas(value:string){
+    let fixedValue = '';
+    let count = 0;
+    for(let i=value.length-1; i>=0; i--){
         if(count==3){
           fixedValue+=',';
           count=0;
         }
         fixedValue += value.charAt(i);
         count++;
-      }
-      if(negativeValue)
-        fixedValue = fixedValue + '-';
-      return fraction? this.reverseString(fixedValue)+fraction: this.reverseString(fixedValue);
     }
-    return value;
+    return fixedValue;
   }
   reverseString(str:string) {
     var splitString = str.split(""); 
